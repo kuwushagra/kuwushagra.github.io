@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fish Ocean</title>
+<title>Fish Ocean Fixed</title>
 
 <style>
 body {
@@ -12,10 +12,9 @@ body {
   font-family: sans-serif;
 }
 
-/* optional but important */
 .fish {
-  opacity: 1;
   cursor: pointer;
+  opacity: 1;
 }
 </style>
 </head>
@@ -60,18 +59,17 @@ xmlns="http://www.w3.org/2000/svg">
   <stop offset="95%" stop-color="#3c2f2f"/>
 </linearGradient>
 
-<g id="fishShape">
-  <path class="fishBody"
-        d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
-  <path class="fishTail"
-        d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
+<!-- IMPORTANT: uses currentColor (fixes coloring issue) -->
+<g id="fishShape" fill="currentColor">
+  <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
+  <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
   <circle cx="15" cy="-3" r="2" fill="#fff"/>
   <circle cx="15" cy="-3" r="1" fill="#000"/>
 </g>
 
 </defs>
 
-<!-- WAVES (UNCHANGED) -->
+<!-- WAVES -->
 <path fill="url(#gradient)" fill-opacity="0.53"
 d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"
 class="path-0"/>
@@ -80,7 +78,7 @@ class="path-0"/>
 d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
 class="path-1"/>
 
-<!-- FISH (NO <a> WRAPPER — IMPORTANT FIX) -->
+<!------------------------------------- FISH ------------------------------------->
 <use href="#fishShape" id="fish1" class="fish"/>
 <use href="#fishShape" id="fish2" class="fish"/>
 <use href="#fishShape" id="fish3" class="fish"/>
@@ -88,41 +86,36 @@ class="path-1"/>
 </svg>
 
 <script>
-
 document.addEventListener("DOMContentLoaded", () => {
 
-const WATER_LINE = 560;
+const WATER_LINE = 570;
 
 const fishConfigs = [
   { id:"fish1", x0:200, vx:1.8, power:45, delay:0,   interval:180 },
   { id:"fish2", x0:500, vx:1.6, power:50, delay:60,  interval:220 },
   { id:"fish3", x0:900, vx:2.0, power:42, delay:120, interval:260 }
 ];
+/*--------------------------------------------------------------------------*/
+  
+function randomColor() {
+  const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
 const fishes = fishConfigs.map(cfg => {
   const el = document.getElementById(cfg.id);
+
+  const c = randomColor();
+  el.style.color = c;
+
+  el.setAttribute("transform", `translate(${cfg.x0},560) scale(1.6)`);
+
   return {
     el,
     cfg,
     t: 0,
     cooldown: cfg.delay
   };
-});
-
-function randomColor() {
-  const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
-  return colors[Math.floor(Math.random()*colors.length)];
-}
-
-fishes.forEach(f => {
-  const body = f.el.querySelector(".fishBody");
-  const tail = f.el.querySelector(".fishTail");
-
-  const c = randomColor();
-  body.setAttribute("fill", c);
-  tail.setAttribute("fill", c);
-
-  f.el.setAttribute("transform", `translate(${f.cfg.x0},560) scale(1.6)`);
 });
 
 function step(f) {
@@ -163,7 +156,6 @@ function loop() {
 loop();
 
 });
-
 </script>
 
 </body>
