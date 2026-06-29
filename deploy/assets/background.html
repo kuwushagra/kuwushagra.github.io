@@ -131,7 +131,7 @@ for (let i = 0; i < FISH_COUNT; i++) {
   });
 
   el.addEventListener("click", () => {
-    el.style.transform += " scale(1.2)";
+   
   });
 }
 
@@ -150,8 +150,14 @@ const fishes = fishConfigs.map(cfg => {
 });
 
 fishes.forEach(f => {
-  f.el.addEventListener("click", () => {
-    alert("🐟 Fish clicked!");
+  f.el.style.transform += " scale(1.2)";
+  f.el.addEventListener("click", (e) => {
+    const url = f.el.getAttribute("href");
+    if (url) {
+      window.open(url);
+    } else {
+      alert("No URL found 🐟");
+    }
   });
 });
 
