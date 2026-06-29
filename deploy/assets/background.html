@@ -47,7 +47,6 @@ function randomColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-/* apply fish colors */
 fishes.forEach(f => {
   const body = f.el.querySelector(".fishBody");
   const tail = f.el.querySelector(".fishTail");
@@ -56,7 +55,11 @@ fishes.forEach(f => {
   tail.setAttribute("fill", f.color);
 });
 
-/* physics step */
+fishes.forEach(f => {
+  f.el.setAttribute("transform", `translate(${f.cfg.x0},560) scale(1.6)`);
+  f.el.style.opacity = 1;
+});
+
 function step(f) {
 
   if (f.cooldown > 0) {
@@ -90,7 +93,6 @@ function step(f) {
   }
 }
 
-/* loop */
 function loop() {
   fishes.forEach(step);
   requestAnimationFrame(loop);
