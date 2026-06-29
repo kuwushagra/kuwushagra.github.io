@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-    <link rel="stylesheet" href="https://ka-f.webawesome.com/webawesome@3.8.0/styles/webawesome.css" />
-    <script type="module" src="https://ka-f.webawesome.com/webawesome@3.8.0/webawesome.loader.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kushagra Bhagat - Portfolio</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; line-height: 1.7; max-width: 650px; margin: 40px auto; padding: 0 10px; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); color: white; }
-        h1 { margin-bottom: 0; }
-        a { color: #bdc3c7; text-decoration: none; }
-        a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
-    </style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fish Ocean</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* optional but important */
+.fish {
+  opacity: 1;
+  cursor: pointer;
+}
+</style>
 </head>
+
 <body>
 
 <svg style="background-color:#000;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"
@@ -53,7 +60,6 @@ xmlns="http://www.w3.org/2000/svg">
   <stop offset="95%" stop-color="#3c2f2f"/>
 </linearGradient>
 
-<!-- Fish Code -->
 <g id="fishShape">
   <path class="fishBody"
         d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
@@ -65,7 +71,7 @@ xmlns="http://www.w3.org/2000/svg">
 
 </defs>
 
-<!-- Waves -->
+<!-- WAVES (UNCHANGED) -->
 <path fill="url(#gradient)" fill-opacity="0.53"
 d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"
 class="path-0"/>
@@ -74,58 +80,49 @@ class="path-0"/>
 d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
 class="path-1"/>
 
-<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-<!-- Project Pages -->
-<a href="#projects"><use href="#fishShape" id="fish1" class="fish"/></a>
-<a href="#contact"><use href="#fishShape" id="fish2" class="fish"/></a>
-<a href="#about"><use href="#fishShape" id="fish3" class="fish"/></a>
+<!-- FISH (NO <a> WRAPPER — IMPORTANT FIX) -->
+<use href="#fishShape" id="fish1" class="fish"/>
+<use href="#fishShape" id="fish2" class="fish"/>
+<use href="#fishShape" id="fish3" class="fish"/>
 
 </svg>
-<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<!-- JavaScript -->
-  
 <script>
+
+document.addEventListener("DOMContentLoaded", () => {
 
 const WATER_LINE = 560;
 
-
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 const fishConfigs = [
   { id:"fish1", x0:200, vx:1.8, power:45, delay:0,   interval:180 },
   { id:"fish2", x0:500, vx:1.6, power:50, delay:60,  interval:220 },
   { id:"fish3", x0:900, vx:2.0, power:42, delay:120, interval:260 }
 ];
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-const fishes = fishConfigs.map(cfg => ({
-  el: document.getElementById(cfg.id),
-  cfg,
-  t: 0,
-  cooldown: cfg.delay,
-  color: randomColor()
-}));
+const fishes = fishConfigs.map(cfg => {
+  const el = document.getElementById(cfg.id);
+  return {
+    el,
+    cfg,
+    t: 0,
+    cooldown: cfg.delay
+  };
+});
 
 function randomColor() {
-  const colors = [
-    "#ff5e62", "#ff9966", "#ffd166",
-    "#06d6a0", "#4cc9f0", "#b5179e",
-    "#f72585", "#fca311"
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+  const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
+  return colors[Math.floor(Math.random()*colors.length)];
 }
 
 fishes.forEach(f => {
   const body = f.el.querySelector(".fishBody");
   const tail = f.el.querySelector(".fishTail");
 
-  body.setAttribute("fill", f.color);
-  tail.setAttribute("fill", f.color);
-});
+  const c = randomColor();
+  body.setAttribute("fill", c);
+  tail.setAttribute("fill", c);
 
-fishes.forEach(f => {
   f.el.setAttribute("transform", `translate(${f.cfg.x0},560) scale(1.6)`);
-  f.el.style.opacity = 1;
 });
 
 function step(f) {
@@ -136,21 +133,18 @@ function step(f) {
   }
 
   f.t += 0.05;
-  const t = f.t;
 
-  const x = f.cfg.x0 + f.cfg.vx * t * 30;
+  const x = f.cfg.x0 + f.cfg.vx * f.t * 30;
 
   const y =
     WATER_LINE -
-    (f.cfg.power * t - 0.5 * 9.8 * t * t);
+    (f.cfg.power * f.t - 0.5 * 9.8 * f.t * f.t);
 
-  if (y < WATER_LINE) {
-    f.el.style.opacity = 1;
-  }
+  f.el.style.opacity = 1;
 
   f.el.setAttribute(
     "transform",
-    `translate(${x},${y}) rotate(${Math.min(t * 10 - 40, 75)}) scale(1.6)`
+    `translate(${x},${y}) rotate(${Math.min(f.t * 10 - 40, 75)}) scale(1.6)`
   );
 
   if (y >= WATER_LINE || x > 1440) {
@@ -168,5 +162,9 @@ function loop() {
 
 loop();
 
+});
+
 </script>
+
 </body>
+</html>
