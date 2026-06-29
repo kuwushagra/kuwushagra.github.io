@@ -14,12 +14,10 @@
     </style>
 </head>
 <body>
-    <svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
+   <svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
   <style>
     /* ---- WAVE ANIMATIONS ---- */
-    .path-0 {
-      animation: pathAnim-0 4s linear infinite;
-    }
+    .path-0 { animation: pathAnim-0 4s linear infinite; }
     @keyframes pathAnim-0 {
       0%, 100% { d: path("M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"); }
       25%  { d: path("M 0,690 L 0,530 C 120,550 220,560 320,540 C 450,510 580,480 700,500 C 850,520 980,570 1120,550 C 1230,530 1340,550 1440,570 L 1440,690 L 0,690 Z"); }
@@ -27,9 +25,7 @@
       75%  { d: path("M 0,690 L 0,540 C 140,520 250,540 360,560 C 480,580 600,530 720,510 C 880,490 1020,540 1150,560 C 1250,580 1350,560 1440,570 L 1440,690 L 0,690 Z"); }
     }
 
-    .path-1 {
-      animation: pathAnim-1 4s linear infinite;
-    }
+    .path-1 { animation: pathAnim-1 4s linear infinite; }
     @keyframes pathAnim-1 {
       0%, 100% { d: path("M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"); }
       25%  { d: path("M 0,690 L 0,580 C 150,600 250,620 350,600 C 480,570 600,540 720,560 C 850,580 980,630 1100,610 C 1220,590 1320,610 1440,630 L 1440,690 L 0,690 Z"); }
@@ -37,105 +33,117 @@
       75%  { d: path("M 0,690 L 0,590 C 90,560 190,540 300,560 C 420,580 520,620 650,640 C 780,660 900,610 1020,590 C 1150,570 1280,600 1440,630 L 1440,690 L 0,690 Z"); }
     }
 
-    /* ---- JUMPING FISH ANIMATIONS ---- */
+    /* ---- CLICKABLE FISH WRAPPER ---- */
+    .clickable-fish {
+      cursor: pointer;
+      pointer-events: all; /* Allows clicking even though SVG is in background */
+    }
+    .clickable-fish:hover {
+      filter: brightness(1.3); /* Visual feedback when hovering over fish */
+    }
+
+    /* ---- CORRECTED JUMPING TRAJECTORIES ---- */
     .jumping-fish {
       transform-origin: center;
       opacity: 0;
     }
 
-    /* Fish 1: Leaps on the left side */
+    /* Fish 1 (Left Leap): Smooth left-to-right arc */
     .fish-1 {
-      animation: leap-left 7s ease-in-out infinite;
+      animation: fixed-leap-left 7s ease-in-out infinite;
     }
-    @keyframes leap-left {
+    @keyframes fixed-leap-left {
       0% {
-        transform: translate(250px, 600px) rotate(-45deg);
+        transform: translate(200px, 680px) rotate(-60deg) scale(2);
         opacity: 0;
       }
-      10% {
-        opacity: 1; /* Fade in as it breaks the water */
+      5% {
+        opacity: 1; /* Emerges from behind wave */
       }
-      20% {
-        transform: translate(350px, 420px) rotate(0deg); /* Peak of the jump */
+      15% {
+        transform: translate(350px, 400px) rotate(-10deg) scale(2); /* Peaking */
         opacity: 1;
       }
-      30% {
+      25% {
+        transform: translate(500px, 430px) rotate(45deg) scale(2); /* Angling down */
         opacity: 1;
       }
-      40% {
-        transform: translate(450px, 600px) rotate(45deg); /* Dive back in */
-        opacity: 0;
+      32% {
+        transform: translate(580px, 650px) rotate(75deg) scale(2); /* Nose dives deep */
+        opacity: 1;
       }
-      100% {
-        transform: translate(450px, 600px) rotate(45deg);
-        opacity: 0; /* Hidden waiting period before next jump */
+      33%, 100% {
+        transform: translate(580px, 700px) rotate(75deg) scale(2);
+        opacity: 0; /* Stays hidden underneath until next loop */
       }
     }
 
-    /* Fish 2: Leaps on the right side with a delay */
+    /* Fish 2 (Right Leap): Shorter, distinct arc on the right side */
     .fish-2 {
-      animation: leap-right 8s ease-in-out infinite;
-      animation-delay: 3s; /* Ensures they don't jump at the exact same time */
+      animation: fixed-leap-right 9s ease-in-out infinite;
+      animation-delay: 3.5s;
     }
-    @keyframes leap-right {
+    @keyframes fixed-leap-right {
       0% {
-        transform: translate(900px, 620px) rotate(-50deg) scale(0.8); /* Slightly smaller fish */
+        transform: translate(850px, 680px) rotate(-55deg) scale(1.7);
         opacity: 0;
       }
-      10% {
+      5% {
         opacity: 1;
       }
-      20% {
-        transform: translate(1000px, 460px) rotate(0deg) scale(0.8);
+      15% {
+        transform: translate(980px, 450px) rotate(-5deg) scale(1.7);
+      }
+      25% {
+        transform: translate(1110px, 480px) rotate(45deg) scale(1.7);
+      }
+      32% {
+        transform: translate(1200px, 660px) rotate(70deg) scale(1.7);
         opacity: 1;
       }
-      30% {
-        opacity: 1;
-      }
-      40% {
-        transform: translate(1100px, 620px) rotate(50deg) scale(0.8);
-        opacity: 0;
-      }
-      100% {
-        transform: translate(1100px, 620px) rotate(50deg) scale(0.8);
+      33%, 100% {
+        transform: translate(1200px, 720px) rotate(70deg) scale(1.7);
         opacity: 0;
       }
     }
   </style>
   
   <defs>
-    <!-- Your existing wave gradient -->
     <linearGradient id="gradient" x1="56%" y1="0%" x2="44%" y2="100%">
       <stop offset="5%" stop-color="#854442"></stop>
       <stop offset="95%" stop-color="#3c2f2f"></stop>
     </linearGradient>
 
-    <!-- High-contrast terracotta accent color for the fish -->
+    <!-- Vibrant Terracotta Orange for visibility -->
     <linearGradient id="fishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E2725B"></stop>
-      <stop offset="100%" stop-color="#854442"></stop>
+      <stop offset="0%" stop-color="#FF7E5F"></stop>
+      <stop offset="100%" stop-color="#FEB47B"></stop>
     </linearGradient>
     
-    <!-- Simple, sleek fish shape blueprint -->
+    <!-- Left-to-right facing fish template (Nose is at -25, Tail is at +32) -->
     <g id="fish-shape">
-      <!-- Fish Body and Tail -->
-      <path d="M -20,0 C -5,-12 15,-10 25,0 C 15,10 -5,12 -20,0 Z M 22,0 L 32,-8 L 29,0 L 32,8 Z" fill="url(#fishGradient)"/>
-      <!-- Tiny Fin -->
-      <path d="M 0,6 C 3,12 8,12 7,6 Z" fill="#E2725B" opacity="0.8"/>
+      <path d="M -25,0 C -10,-12 15,-10 25,0 C 15,10 -10,12 -25,0 Z M 22,0 L 32,-9 L 28,0 L 32,9 Z" fill="url(#fishGradient)"/>
+      <path d="M -5,5 C -2,12 3,12 2,5 Z" fill="#FF7E5F" opacity="0.9"/>
     </g>
   </defs>
   
-  <!-- Back wave (slightly higher and semi-transparent) -->
+  <!-- Back wave -->
   <path d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
   
-  <!-- THE JUMPING FISH LAYER (Placed between the back wave and front wave!) -->
-  <!-- This makes them look like they emerge from behind the front layer of water -->
-  <use href="#fish-shape" class="jumping-fish fish-1" />
-  <use href="#fish-shape" class="jumping-fish fish-2" />
+  <!-- CLICKABLE INTERACTIVE FISH LAYER -->
+  <!-- Change href="#" to your actual target links like href="#projects" or href="#contact" -->
+  <a href="#fish-left-secret" class="clickable-fish">
+    <use href="#fish-shape" class="jumping-fish fish-1" />
+  </a>
   
-  <!-- Front wave (lower and solid) -->
+  <a href="#fish-right-secret" class="clickable-fish">
+    <use href="#fish-shape" class="jumping-fish fish-2" />
+  </a>
+  
+  <!-- Front wave -->
   <path d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
 </svg>
+
 
    
     <h1>Kushagra Bhagat</h1>
