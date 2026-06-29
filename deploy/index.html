@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-   <svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
+  <svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
   <style>
     /* ---- WAVE ANIMATIONS ---- */
     .path-0 { animation: pathAnim-0 4s linear infinite; }
@@ -33,76 +33,78 @@
       75%  { d: path("M 0,690 L 0,590 C 90,560 190,540 300,560 C 420,580 520,620 650,640 C 780,660 900,610 1020,590 C 1150,570 1280,600 1440,630 L 1440,690 L 0,690 Z"); }
     }
 
-    /* ---- CLICKABLE FISH WRAPPER ---- */
+    /* ---- CLICKABLE SETTINGS ---- */
     .clickable-fish {
       cursor: pointer;
-      pointer-events: all; /* Allows clicking even though SVG is in background */
+      pointer-events: all;
     }
     .clickable-fish:hover {
-      filter: brightness(1.3); /* Visual feedback when hovering over fish */
+      filter: brightness(1.2) drop-shadow(0px 0px 8px rgba(255,126,95,0.6));
     }
 
-    /* ---- CORRECTED JUMPING TRAJECTORIES ---- */
+    /* ---- FIXED TRANSFORMATION ENGINE ---- */
     .jumping-fish {
       transform-origin: center;
       opacity: 0;
     }
 
-    /* Fish 1 (Left Leap): Smooth left-to-right arc */
+    /* Fish 1 (Left): Slower 10-second loop. Leap happens between 0% and 40% */
     .fish-1 {
-      animation: fixed-leap-left 7s ease-in-out infinite;
+      animation: realistic-leap-left 10s ease-in-out infinite;
     }
-    @keyframes fixed-leap-left {
+    @keyframes realistic-leap-left {
       0% {
-        transform: translate(200px, 680px) rotate(-60deg) scale(2);
+        transform: translate(200px, 780px) rotate(-45deg) scale(2);
         opacity: 0;
       }
       5% {
-        opacity: 1; /* Emerges from behind wave */
+        opacity: 1; /* Appears smoothly as it crosses the water line */
       }
-      15% {
-        transform: translate(350px, 400px) rotate(-10deg) scale(2); /* Peaking */
-        opacity: 1;
-      }
-      25% {
-        transform: translate(500px, 430px) rotate(45deg) scale(2); /* Angling down */
+      18% {
+        transform: translate(380px, 420px) rotate(5deg) scale(2); /* Peaking naturally */
         opacity: 1;
       }
       32% {
-        transform: translate(580px, 650px) rotate(75deg) scale(2); /* Nose dives deep */
+        transform: translate(540px, 480px) rotate(45deg) scale(2); /* Angling downward */
         opacity: 1;
       }
-      33%, 100% {
-        transform: translate(580px, 700px) rotate(75deg) scale(2);
-        opacity: 0; /* Stays hidden underneath until next loop */
+      39% {
+        transform: translate(620px, 760px) rotate(65deg) scale(2); /* Nose-dives deep below floor */
+        opacity: 1;
+      }
+      40%, 100% {
+        transform: translate(620px, 780px) rotate(65deg) scale(2);
+        opacity: 0; /* Submerged resting state */
       }
     }
 
-    /* Fish 2 (Right Leap): Shorter, distinct arc on the right side */
+    /* Fish 2 (Right): Slower 12-second loop. Leap happens after a 4-second delay */
     .fish-2 {
-      animation: fixed-leap-right 9s ease-in-out infinite;
-      animation-delay: 3.5s;
+      animation: realistic-leap-right 12s ease-in-out infinite;
+      animation-delay: 4s;
     }
-    @keyframes fixed-leap-right {
+    @keyframes realistic-leap-right {
       0% {
-        transform: translate(850px, 680px) rotate(-55deg) scale(1.7);
+        transform: translate(800px, 780px) rotate(-45deg) scale(1.8);
         opacity: 0;
       }
       5% {
         opacity: 1;
       }
-      15% {
-        transform: translate(980px, 450px) rotate(-5deg) scale(1.7);
-      }
-      25% {
-        transform: translate(1110px, 480px) rotate(45deg) scale(1.7);
-      }
-      32% {
-        transform: translate(1200px, 660px) rotate(70deg) scale(1.7);
+      18% {
+        transform: translate(960px, 460px) rotate(5deg) scale(1.8);
         opacity: 1;
       }
-      33%, 100% {
-        transform: translate(1200px, 720px) rotate(70deg) scale(1.7);
+      32% {
+        transform: translate(1100px, 510px) rotate(45deg) scale(1.8);
+        opacity: 1;
+      }
+      39% {
+        transform: translate(1180px, 760px) rotate(65deg) scale(1.8);
+        opacity: 1;
+      }
+      40%, 100% {
+        transform: translate(1180px, 780px) rotate(65deg) scale(1.8);
         opacity: 0;
       }
     }
@@ -114,35 +116,36 @@
       <stop offset="95%" stop-color="#3c2f2f"></stop>
     </linearGradient>
 
-    <!-- Vibrant Terracotta Orange for visibility -->
     <linearGradient id="fishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FF7E5F"></stop>
       <stop offset="100%" stop-color="#FEB47B"></stop>
     </linearGradient>
     
-    <!-- Left-to-right facing fish template (Nose is at -25, Tail is at +32) -->
+    <!-- FLIPPED TEMPLATE: Nose is now on the right side (+25), Tail is on the left (-32) -->
     <g id="fish-shape">
-      <path d="M -25,0 C -10,-12 15,-10 25,0 C 15,10 -10,12 -25,0 Z M 22,0 L 32,-9 L 28,0 L 32,9 Z" fill="url(#fishGradient)"/>
-      <path d="M -5,5 C -2,12 3,12 2,5 Z" fill="#FF7E5F" opacity="0.9"/>
+      <!-- Fish Body and Tail -->
+      <path d="M 25,0 C 10,-12 -15,-10 -25,0 C -15,10 10,12 25,0 Z M -22,0 L -32,-9 L -28,0 L -32,9 Z" fill="url(#fishGradient)"/>
+      <!-- Bottom Fin -->
+      <path d="M 5,5 C 2,12 -3,12 -2,5 Z" fill="#FF7E5F" opacity="0.9"/>
     </g>
   </defs>
   
   <!-- Back wave -->
   <path d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
   
-  <!-- CLICKABLE INTERACTIVE FISH LAYER -->
-  <!-- Change href="#" to your actual target links like href="#projects" or href="#contact" -->
-  <a href="#fish-left-secret" class="clickable-fish">
+  <!-- INTERACTIVE FISH LAYER -->
+  <a href="#projects" class="clickable-fish">
     <use href="#fish-shape" class="jumping-fish fish-1" />
   </a>
   
-  <a href="#fish-right-secret" class="clickable-fish">
+  <a href="#contact" class="clickable-fish">
     <use href="#fish-shape" class="jumping-fish fish-2" />
   </a>
   
   <!-- Front wave -->
   <path d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
 </svg>
+
 
 
    
