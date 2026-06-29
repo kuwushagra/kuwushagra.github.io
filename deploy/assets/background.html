@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kushagra Bhagat - Portfolio</title>
+<title>Fish Ocean</title>
 
 <style>
 body {
@@ -91,15 +91,23 @@ document.addEventListener("DOMContentLoaded", () => {
 const svg = document.getElementById("svg");
 
 const fishUrls = [
-  "https:/kuwushagra.github.io/",
-  "https:/kuwushagra.github.io/projects"
+  "https://example.com/1",
+  "https://example.com/2",
+  "https://example.com/3",
+  "https://example.com/4",
+  "https://example.com/5",
+  "https://example.com/6",
+  "https://example.com/7",
+  "https://example.com/8",
+  "https://example.com/9",
+  "https://example.com/10"
 ];
 
 const MAX_ACTIVE = 3;
 const WATER_LINE = 560;
 
 function fishColor() {
-  return [["#ffd166","#ff7b00","#ff4d6d","#f1faee","#90e0ef","#00f5d4","#00b4d8","#0077b6","#a7c957","#f77f00"][Math.floor(Math.random()*10)];
+  return ["#ffd166","#ff7b00","#ff4d6d","#f1faee"][Math.floor(Math.random()*4)];
 }
 
 const fishes = [];
