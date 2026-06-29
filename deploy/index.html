@@ -16,7 +16,7 @@
 <body>
 <svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
   <style>
-    /* ---- WAVE ANIMATIONS (Anchored firmly to the new viewBox bottom) ---- */
+    /* ---- WAVE ANIMATIONS ---- */
     .path-0 { animation: pathAnim-0 4s linear infinite; }
     @keyframes pathAnim-0 {
       0%, 100% { d: path("M 0,900 L 0,750 C 100,730 200,700 350,720 C 500,740 600,780 750,760 C 900,740 1050,680 1200,700 C 1300,720 1380,750 1440,770 L 1440,900 L 0,900 Z"); }
@@ -48,61 +48,63 @@
       opacity: 0;
     }
 
-    /* Fish 1 (Left Jump) - Takes 3.5 seconds to jump, then rests under water */
+    /* Fish 1 (Left Jump) - Stays very low to the water line */
     .fish-1 {
       animation: true-plunge-left 10s cubic-bezier(0.25, 1, 0.5, 1) infinite;
     }
     @keyframes true-plunge-left {
       0% {
-        transform: translate(150px, 880px) rotate(-65deg) scale(2);
+        transform: translate(150px, 860px) rotate(-55deg) scale(2);
         opacity: 0;
       }
       2% {
-        opacity: 1; /* Breaths water line, completely visible */
+        opacity: 1; /* Appears at water boundary */
       }
       15% {
-        transform: translate(350px, 450px) rotate(-10deg) scale(2); /* Smooth arc apex */
+        transform: translate(320px, 660px) rotate(0deg) scale(2); /* Lowered peak to 660px (just above water) */
         opacity: 1;
       }
       28% {
-        transform: translate(520px, 550px) rotate(35deg) scale(2); /* Gravitational tilt */
+        transform: translate(480px, 720px) rotate(35deg) scale(2);
         opacity: 1;
       }
       34% {
-        transform: translate(600px, 820px) rotate(70deg) scale(2); /* Head-first dive deep into front wave */
+        transform: translate(560px, 830px) rotate(65deg) scale(2); /* Direct down plunge */
         opacity: 1;
       }
       35%, 100% {
-        transform: translate(600px, 880px) rotate(70deg) scale(2);
-        opacity: 0; /* Fully submerged cooldown loop */
+        transform: translate(560px, 880px) rotate(65deg) scale(2);
+        opacity: 0; /* Submerged sleep period */
       }
     }
 
-    /* Fish 2 (Right Jump) - Activates after 4.5 seconds */
+    /* Fish 2 (Right Jump) - Low water hop */
     .fish-2 {
       animation: true-plunge-right 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
       animation-delay: 4.5s;
     }
     @keyframes true-plunge-right {
       0% {
-        transform: translate(750px, 880px) rotate(-65deg) scale(1.7);
+        transform: translate(750px, 860px) rotate(-55deg) scale(1.7);
         opacity: 0;
       }
       2% {
         opacity: 1;
       }
       15% {
-        transform: translate(950px, 500px) rotate(-10deg) scale(1.7);
+        transform: translate(900px, 680px) rotate(0deg) scale(1.7); /* Lowered peak to 680px */
+        opacity: 1;
       }
       28% {
-        transform: translate(1100px, 600px) rotate(35deg) scale(1.7);
+        transform: translate(1040px, 740px) rotate(35deg) scale(1.7);
+        opacity: 1;
       }
       34% {
-        transform: translate(1180px, 830px) rotate(70deg) scale(1.7);
+        transform: translate(1120px, 840px) rotate(65deg) scale(1.7);
         opacity: 1;
       }
       35%, 100% {
-        transform: translate(1180px, 880px) rotate(70deg) scale(1.7);
+        transform: translate(1120px, 880px) rotate(65deg) scale(1.7);
         opacity: 0;
       }
     }
@@ -121,7 +123,7 @@
       <stop offset="100%" stop-color="#FEB47B"></stop>
     </linearGradient>
     
-    <!-- Properly oriented fish asset (Nose points right) -->
+    <!-- Fish Asset Blueprint -->
     <g id="fish-shape">
       <path d="M 25,0 C 10,-12 -15,-10 -25,0 C -15,10 10,12 25,0 Z M -22,0 L -32,-9 L -28,0 L -32,9 Z" fill="url(#fishGradient)"/>
       <path d="M 5,5 C 2,12 -3,12 -2,5 Z" fill="#FF7E5F" opacity="0.9"/>
@@ -140,9 +142,10 @@
     <use href="#fish-shape" class="jumping-fish fish-2" />
   </a>
   
-  <!-- Front solid wave layer (Fishes dive straight behind this block) -->
+  <!-- Front solid wave layer -->
   <path d="M 0,900 L 0,800 C 100,780 220,750 330,770 C 450,800 550,850 680,830 C 800,810 920,750 1050,780 C 1180,810 1300,840 1440,830 L 1440,900 L 0,900 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
 </svg>
+
 
 
    
