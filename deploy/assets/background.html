@@ -91,16 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const svg = document.getElementById("svg");
 
 const fishUrls = [
-  "https://example.com/1",
-  "https://example.com/2",
-  "https://example.com/3",
-  "https://example.com/4",
-  "https://example.com/5",
-  "https://example.com/6",
-  "https://example.com/7",
-  "https://example.com/8",
-  "https://example.com/9",
-  "https://example.com/10"
+ "https://kuwushagra.github.io/",
+ "https://kuwushagra.github.io/projects"
 ];
 
 const MAX_ACTIVE = 3;
@@ -158,7 +150,7 @@ function step(f) {
 
   f.t += 0.05;
 
-  const x = f.x0 + f.vx * f.t * 12;  // 🔥 SLOWED DOWN (30 → 12)
+  const x = f.x0 + f.vx * f.t * 12;
   const y = WATER_LINE - (f.power * f.t - 0.5 * 9.8 * f.t * f.t);
 
   if (f.alpha < 1 && f.t < 1) f.alpha += 0.05;
