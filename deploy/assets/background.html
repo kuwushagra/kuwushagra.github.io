@@ -81,27 +81,58 @@ d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610
 class="path-1"/>
 
 <!------------------------------------------------- FISH ------------------------------------------------->
-<use href="#fishShape" id="fish1" class="fish"/>
-<use href="#fishShape" id="fish2" class="fish"/>
-<use href="#fishShape" id="fish3" class="fish"/>
+<use href="https://kuwushagra.github.io/" id="fish1" class="fish"/>
+<use href="https://kuwushagra.github.io/geepac" id="fish2" class="fish"/>
+<use href="https://kuwushagra.github.io/simplifile" id="fish3" class="fish"/>
+<use href="https://kuwushagra.github.io/projects" id="fish3" class="fish"/>
 
 </svg>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-const WATER_LINE = 570;
+const FISH_COUNT = 10;
 
-const fishConfigs = [
-  { id:"fish1", x0:200, vx:1.8, power:45, delay:0,   interval:180 },
-  { id:"fish2", x0:500, vx:1.6, power:50, delay:60,  interval:220 },
-  { id:"fish3", x0:900, vx:2.0, power:42, delay:120, interval:260 }
-];
 /*--------------------------------------------------------------------------------------------------*/
 
+const WATER_LINE = 570;
+  
+const fishes = [];
+  
 function randomColor() {
   const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
   return colors[Math.floor(Math.random() * colors.length)];
+}
+  
+for (let i = 0; i < FISH_COUNT; i++) {
+
+  const el = document.getElementById("fishTemplate").cloneNode(true);
+
+  el.removeAttribute("id");
+  el.style.display = "block";
+
+  document.querySelector("svg").appendChild(el);
+
+  const cfg = {
+    x0: Math.random() * 1200,
+    vx: 1 + Math.random() * 2,
+    power: 35 + Math.random() * 25,
+    delay: Math.floor(Math.random() * 120),
+    interval: 120 + Math.floor(Math.random() * 200)
+  };
+
+  el.style.color = randomColor();
+
+  fishes.push({
+    el,
+    cfg,
+    t: 0,
+    cooldown: cfg.delay
+  });
+
+  el.addEventListener("click", () => {
+    el.style.transform += " scale(1.2)";
+  });
 }
 
 const fishes = fishConfigs.map(cfg => {
