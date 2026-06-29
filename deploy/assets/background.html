@@ -9,157 +9,95 @@
 body {
   margin: 0;
   overflow: hidden;
-  font-family: sans-serif;
 }
 
 svg {
-  pointer-events: auto;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
 }
 
 .fish {
-  pointer-events: all;
   cursor: pointer;
-  opacity: 1;
+  pointer-events: all;
 }
 </style>
 </head>
 
 <body>
 
-<svg style="background-color:#000;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;"
-viewBox="0 0 1440 690"
-preserveAspectRatio="none"
-xmlns="http://www.w3.org/2000/svg">
-
-<style>
-.path-0 {
-  animation: pathAnim0 4s linear infinite;
-}
-
-@keyframes pathAnim0 {
-  0%   { d: path("M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"); }
-  25%  { d: path("M 0,690 L 0,530 C 120,550 220,560 320,540 C 450,510 580,480 700,500 C 850,520 980,570 1120,550 C 1230,530 1340,550 1440,570 L 1440,690 L 0,690 Z"); }
-  50%  { d: path("M 0,690 L 0,560 C 80,540 180,510 300,530 C 420,550 550,580 680,560 C 820,530 950,490 1100,510 C 1220,530 1320,560 1440,570 L 1440,690 L 0,690 Z"); }
-  75%  { d: path("M 0,690 L 0,540 C 140,520 250,540 360,560 C 480,580 600,530 720,510 C 880,490 1020,540 1150,560 C 1250,580 1350,560 1440,570 L 1440,690 L 0,690 Z"); }
-  100% { d: path("M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"); }
-}
-
-.path-1 {
-  animation: pathAnim1 4s linear infinite;
-}
-
-@keyframes pathAnim1 {
-  0%   { d: path("M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"); }
-  25%  { d: path("M 0,690 L 0,580 C 150,600 250,620 350,600 C 480,570 600,540 720,560 C 850,580 980,630 1100,610 C 1220,590 1320,610 1440,630 L 1440,690 L 0,690 Z"); }
-  50%  { d: path("M 0,690 L 0,610 C 120,630 220,600 320,580 C 450,550 580,590 700,610 C 830,630 950,650 1080,620 C 1200,590 1310,610 1440,630 L 1440,690 L 0,690 Z"); }
-  75%  { d: path("M 0,690 L 0,590 C 90,560 190,540 300,560 C 420,580 520,620 650,640 C 780,660 900,610 1020,590 C 1150,570 1280,600 1440,630 L 1440,690 L 0,690 Z"); }
-  100% { d: path("M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"); }
-}
-</style>
+<svg viewBox="0 0 1440 690" preserveAspectRatio="none">
 
 <defs>
 
-<linearGradient id="gradient" x1="56%" y1="0%" x2="44%" y2="100%">
-  <stop offset="5%" stop-color="#854442"/>
-  <stop offset="95%" stop-color="#3c2f2f"/>
+<linearGradient id="gradient" x1="50%" y1="0%" x2="50%" y2="100%">
+  <stop offset="0%" stop-color="#2b5876"/>
+  <stop offset="100%" stop-color="#4e4376"/>
 </linearGradient>
 
-<g id="fishShape" fill="currentColor">
-  <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
-  <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
+<!-- Fish -->
+<g id="fishTemplate">
+  <g class="fish" fill="currentColor">
+    <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
+    <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
+  </g>
 </g>
 
 </defs>
 
-<!-- WAVES -->
-<path fill="url(#gradient)" fill-opacity="0.53"
-d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"
-class="path-0"/>
-
-<path fill="url(#gradient)" fill-opacity="1"
-d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
-class="path-1"/>
-
-<!------------------------------------------------- FISH ------------------------------------------------->
-<use href="https://kuwushagra.github.io/" id="fish1" class="fish"/>
-<use href="https://kuwushagra.github.io/geepac" id="fish2" class="fish"/>
-<use href="https://kuwushagra.github.io/simplifile" id="fish3" class="fish"/>
-<use href="https://kuwushagra.github.io/projects" id="fish3" class="fish"/>
+<!-- Waves -->
+<path fill="url(#gradient)" d="M0,600 C200,550 400,650 600,600 C800,550 1000,650 1200,600 C1350,570 1400,580 1440,590 L1440,690 L0,690 Z"/>
 
 </svg>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-const FISH_COUNT = 10;
+const svg = document.querySelector("svg");
 
-/*--------------------------------------------------------------------------------------------------*/
+const fishUrls = [
+ "https://kuwushagra.github.io/"
+  "https://kuwushagra.github.io/projects"
+];
 
-const WATER_LINE = 570;
-  
-const fishes = [];
-  
+const FISH_COUNT = fishUrls.length;
+const WATER_LINE = 560;
+
 function randomColor() {
   const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
-  
+
+const fishes = [];
+
 for (let i = 0; i < FISH_COUNT; i++) {
 
   const el = document.getElementById("fishTemplate").cloneNode(true);
-
   el.removeAttribute("id");
-  el.style.display = "block";
 
-  document.querySelector("svg").appendChild(el);
+  const x0 = Math.random() * 1200;
 
-  const cfg = {
-    x0: Math.random() * 1200,
-    vx: 1 + Math.random() * 2,
-    power: 35 + Math.random() * 25,
-    delay: Math.floor(Math.random() * 120),
-    interval: 120 + Math.floor(Math.random() * 200)
-  };
-
+  el.setAttribute("transform", `translate(${x0},560) scale(1.6)`);
   el.style.color = randomColor();
+
+  el.dataset.url = fishUrls[i];
+
+  svg.appendChild(el);
 
   fishes.push({
     el,
-    cfg,
+    x0,
+    vx: 1 + Math.random() * 2,
     t: 0,
-    cooldown: cfg.delay
+    cooldown: Math.random() * 100,
+    power: 40 + Math.random() * 30,
+    interval: 120 + Math.random() * 200
   });
 
   el.addEventListener("click", () => {
-   
+    window.open(el.dataset.url, "_blank");
   });
 }
-
-const fishes = fishConfigs.map(cfg => {
-  const el = document.getElementById(cfg.id);
-
-  el.style.color = randomColor();
-  el.setAttribute("transform", `translate(${cfg.x0},560) scale(1.6)`);
-
-  return {
-    el,
-    cfg,
-    t: 0,
-    cooldown: cfg.delay
-  };
-});
-
-fishes.forEach(f => {
-  f.el.style.transform += " scale(1.2)";
-  f.el.addEventListener("click", (e) => {
-    const url = f.el.getAttribute("href");
-    if (url) {
-      window.open(url);
-    } else {
-      alert("No URL found 🐟");
-    }
-  });
-});
 
 function step(f) {
 
@@ -170,13 +108,8 @@ function step(f) {
 
   f.t += 0.05;
 
-  const x = f.cfg.x0 + f.cfg.vx * f.t * 30;
-
-  const y =
-    WATER_LINE -
-    (f.cfg.power * f.t - 0.5 * 9.8 * f.t * f.t);
-
-  f.el.style.opacity = 1;
+  const x = f.x0 + f.vx * f.t * 30;
+  const y = WATER_LINE - (f.power * f.t - 0.5 * 9.8 * f.t * f.t);
 
   f.el.setAttribute(
     "transform",
@@ -185,9 +118,8 @@ function step(f) {
 
   if (y >= WATER_LINE || x > 1440) {
     f.t = 0;
-    f.cooldown = f.cfg.interval;
-    f.cfg.x0 = Math.random() * 500 + 100;
-    f.el.style.opacity = 0;
+    f.cooldown = f.interval;
+    f.x0 = Math.random() * 1200;
   }
 }
 
