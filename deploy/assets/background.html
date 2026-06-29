@@ -68,7 +68,7 @@ xmlns="http://www.w3.org/2000/svg">
 </linearGradient>
 
 <g id="fishTemplate">
-  <g class="fish" fill="none" stroke="white" stroke-width="1.5">
+  <g class="fish" fill="none" stroke-width="1.5">
     <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
     <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
   </g>
@@ -76,21 +76,13 @@ xmlns="http://www.w3.org/2000/svg">
 
 </defs>
 
-<path
-fill="url(#gradient)"
-fill-opacity="0.2"
-stroke="#ffffff"
-stroke-opacity="0.25"
-stroke-width="1"
+<path fill="url(#gradient)" fill-opacity="0.2"
+stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"
 d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"
 class="path-0"/>
 
-<path
-fill="url(#gradient)"
-fill-opacity="0.15"
-stroke="#ffffff"
-stroke-opacity="0.18"
-stroke-width="1"
+<path fill="url(#gradient)" fill-opacity="0.15"
+stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"
 d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
 class="path-1"/>
 
@@ -102,12 +94,18 @@ document.addEventListener("DOMContentLoaded", () => {
 const svg = document.getElementById("svg");
 
 const fishUrls = [
- "https://kuwushagra.github.io/",
+ "https://kuwushagra.github.io",
  "https://kuwushagra.github.io/projects"
 ];
 
+const colors = ["#3a86ff", "#8338ec", "#ff006e", "#06d6a0", "#ffd166"];
+
 const MAX_ACTIVE = 3;
 const WATER_LINE = 560;
+
+function fishColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
 const fishes = [];
 
@@ -116,7 +114,11 @@ for (let i = 0; i < fishUrls.length; i++) {
   const el = document.getElementById("fishTemplate").cloneNode(true);
   el.removeAttribute("id");
 
-  el.style.color = "#ffffff";
+  const color = fishColor();
+
+  // ✅ FIX: correct way to color SVG stroke
+  el.querySelector(".fish").setAttribute("stroke", color);
+
   el.style.opacity = 0;
 
   svg.appendChild(el);
