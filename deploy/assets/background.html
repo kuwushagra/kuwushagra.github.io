@@ -12,7 +12,12 @@ body {
   font-family: sans-serif;
 }
 
+svg {
+  pointer-events: auto;
+}
+
 .fish {
+  pointer-events: all;
   cursor: pointer;
   opacity: 1;
 }
@@ -21,7 +26,7 @@ body {
 
 <body>
 
-<svg style="background-color:#000;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"
+<svg style="background-color:#000;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;"
 viewBox="0 0 1440 690"
 preserveAspectRatio="none"
 xmlns="http://www.w3.org/2000/svg">
@@ -77,9 +82,10 @@ class="path-0"/>
 d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
 class="path-1"/>
 
-<!------------------------------------- FISH ------------------------------------->
-<use href="https://kuwushagra.github.io/" id="fish1" class="fish"/>
-<use href="https://kuwushagra.github.io/projects.html" id="fish2" class="fish"/>
+<!------------------------------------------------- FISH ------------------------------------------------->
+<use href="#fishShape" id="fish1" class="fish"/>
+<use href="#fishShape" id="fish2" class="fish"/>
+<use href="#fishShape" id="fish3" class="fish"/>
 
 </svg>
 
@@ -91,9 +97,10 @@ const WATER_LINE = 570;
 const fishConfigs = [
   { id:"fish1", x0:200, vx:1.8, power:45, delay:0,   interval:180 },
   { id:"fish2", x0:500, vx:1.6, power:50, delay:60,  interval:220 },
+  { id:"fish3", x0:900, vx:2.0, power:42, delay:120, interval:260 }
 ];
-/*--------------------------------------------------------------------------*/
-  
+/*--------------------------------------------------------------------------------------------------*/
+
 function randomColor() {
   const colors = ["#ff5e62","#ff9966","#ffd166","#06d6a0","#4cc9f0","#b5179e"];
   return colors[Math.floor(Math.random() * colors.length)];
@@ -102,9 +109,7 @@ function randomColor() {
 const fishes = fishConfigs.map(cfg => {
   const el = document.getElementById(cfg.id);
 
-  const c = randomColor();
-  el.style.color = c;
-
+  el.style.color = randomColor();
   el.setAttribute("transform", `translate(${cfg.x0},560) scale(1.6)`);
 
   return {
@@ -113,6 +118,12 @@ const fishes = fishConfigs.map(cfg => {
     t: 0,
     cooldown: cfg.delay
   };
+});
+
+fishes.forEach(f => {
+  f.el.addEventListener("click", () => {
+    alert("🐟 Fish clicked!");
+  });
 });
 
 function step(f) {
