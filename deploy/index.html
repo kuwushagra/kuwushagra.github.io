@@ -14,136 +14,183 @@
     </style>
 </head>
 <body>
-<svg style="background-color: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;" id="svg" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://w3.org" class="transition duration-300 ease-in-out delay-150">
-  <style>
-    /* ---- WAVE ANIMATIONS ---- */
-    .path-0 { animation: pathAnim-0 4s linear infinite; }
-    @keyframes pathAnim-0 {
-      0%, 100% { d: path("M 0,900 L 0,750 C 100,730 200,700 350,720 C 500,740 600,780 750,760 C 900,740 1050,680 1200,700 C 1300,720 1380,750 1440,770 L 1440,900 L 0,900 Z"); }
-      25%  { d: path("M 0,900 L 0,730 C 120,750 220,760 320,740 C 450,710 580,680 700,700 C 850,720 980,770 1120,750 C 1230,730 1340,750 1440,770 L 1440,900 L 0,900 Z"); }
-      50%  { d: path("M 0,900 L 0,760 C 80,740 180,710 300,730 C 420,750 550,780 680,760 C 820,730 950,690 1100,710 C 1220,730 1320,760 1440,770 L 1440,900 L 0,900 Z"); }
-      75%  { d: path("M 0,900 L 0,740 C 140,720 250,740 360,760 C 480,780 600,730 720,710 C 880,690 1020,740 1150,760 C 1250,780 1350,760 1440,770 L 1440,900 L 0,900 Z"); }
-    }
+<svg style="background-color:#000;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"
+id="svg"
+viewBox="0 0 1440 900"
+preserveAspectRatio="none"
+xmlns="http://www.w3.org/2000/svg">
 
-    .path-1 { animation: pathAnim-1 4s linear infinite; }
-    @keyframes pathAnim-1 {
-      0%, 100% { d: path("M 0,900 L 0,800 C 100,780 220,750 330,770 C 450,800 550,850 680,830 C 800,810 920,750 1050,780 C 1180,810 1300,840 1440,830 L 1440,900 L 0,900 Z"); }
-      25%  { d: path("M 0,900 L 0,780 C 150,800 250,820 350,800 C 480,770 600,740 720,760 C 850,780 980,830 1100,810 C 1220,790 1320,810 1440,830 L 1440,900 L 0,900 Z"); }
-      50%  { d: path("M 0,900 L 0,810 C 120,830 220,800 320,780 C 450,750 580,790 700,810 C 830,830 950,850 1080,820 C 1200,790 1310,810 1440,830 L 1440,900 L 0,900 Z"); }
-      75%  { d: path("M 0,900 L 0,790 C 90,760 190,740 300,760 C 420,780 520,820 650,840 C 780,860 900,810 1020,790 C 1150,770 1280,800 1440,830 L 1440,900 L 0,900 Z"); }
-    }
+<style>
 
-    /* ---- CLICKABLE INTERACTIVE ZONE ---- */
-    .clickable-fish {
-      cursor: pointer;
-      pointer-events: all;
-    }
-    .clickable-fish:hover {
-      filter: brightness(1.2) drop-shadow(0px 0px 8px rgba(255,126,95,0.7));
-    }
+/* ---------------- WAVES ---------------- */
 
-    /* ---- PHYSICS-BASED JUMP MECHANICS ---- */
-    .jumping-fish {
-      transform-origin: center;
-      opacity: 0;
-    }
+.path-0 {
+  animation: pathAnim0 4s linear infinite;
+}
 
-    /* Fish 1 (Left Jump) - Stays very low to the water line */
-    .fish-1 {
-      animation: true-plunge-left 10s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-    }
-    @keyframes true-plunge-left {
-      0% {
-        transform: translate(150px, 860px) rotate(-55deg) scale(2);
-        opacity: 0;
-      }
-      2% {
-        opacity: 1; /* Appears at water boundary */
-      }
-      15% {
-        transform: translate(320px, 660px) rotate(0deg) scale(2); /* Lowered peak to 660px (just above water) */
-        opacity: 1;
-      }
-      28% {
-        transform: translate(480px, 720px) rotate(35deg) scale(2);
-        opacity: 1;
-      }
-      34% {
-        transform: translate(560px, 830px) rotate(65deg) scale(2); /* Direct down plunge */
-        opacity: 1;
-      }
-      35%, 100% {
-        transform: translate(560px, 880px) rotate(65deg) scale(2);
-        opacity: 0; /* Submerged sleep period */
-      }
-    }
+@keyframes pathAnim0 {
+  0%,100% {
+    d:path("M 0,900 L 0,750 C 100,730 200,700 350,720 C 500,740 600,780 750,760 C 900,740 1050,680 1200,700 C 1300,720 1380,750 1440,770 L 1440,900 L 0,900 Z");
+  }
+  50% {
+    d:path("M 0,900 L 0,760 C 120,740 220,760 340,740 C 480,710 600,700 740,720 C 880,740 1020,780 1140,760 C 1260,740 1340,760 1440,770 L 1440,900 L 0,900 Z");
+  }
+}
 
-    /* Fish 2 (Right Jump) - Low water hop */
-    .fish-2 {
-      animation: true-plunge-right 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-      animation-delay: 4.5s;
-    }
-    @keyframes true-plunge-right {
-      0% {
-        transform: translate(750px, 860px) rotate(-55deg) scale(1.7);
-        opacity: 0;
-      }
-      2% {
-        opacity: 1;
-      }
-      15% {
-        transform: translate(900px, 680px) rotate(0deg) scale(1.7); /* Lowered peak to 680px */
-        opacity: 1;
-      }
-      28% {
-        transform: translate(1040px, 740px) rotate(35deg) scale(1.7);
-        opacity: 1;
-      }
-      34% {
-        transform: translate(1120px, 840px) rotate(65deg) scale(1.7);
-        opacity: 1;
-      }
-      35%, 100% {
-        transform: translate(1120px, 880px) rotate(65deg) scale(1.7);
-        opacity: 0;
-      }
-    }
-  </style>
-  
-  <defs>
-    <!-- Wave Gradient -->
-    <linearGradient id="gradient" x1="56%" y1="0%" x2="44%" y2="100%">
-      <stop offset="5%" stop-color="#854442"></stop>
-      <stop offset="95%" stop-color="#3c2f2f"></stop>
-    </linearGradient>
+.path-1 {
+  animation: pathAnim1 4s linear infinite;
+}
 
-    <!-- Coral Orange Gradient -->
-    <linearGradient id="fishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF7E5F"></stop>
-      <stop offset="100%" stop-color="#FEB47B"></stop>
-    </linearGradient>
-    
-    <!-- Fish Asset Blueprint -->
-    <g id="fish-shape">
-      <path d="M 25,0 C 10,-12 -15,-10 -25,0 C -15,10 10,12 25,0 Z M -22,0 L -32,-9 L -28,0 L -32,9 Z" fill="url(#fishGradient)"/>
-      <path d="M 5,5 C 2,12 -3,12 -2,5 Z" fill="#FF7E5F" opacity="0.9"/>
-    </g>
-  </defs>
-  
-  <!-- Back wave layer -->
-  <path d="M 0,900 L 0,750 C 100,730 200,700 350,720 C 500,740 600,780 750,760 C 900,740 1050,680 1200,700 C 1300,720 1380,750 1440,770 L 1440,900 L 0,900 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
-  
-  <!-- THE FISH SANDWICH LAYER -->
-  <a href="#projects" class="clickable-fish">
-    <use href="#fish-shape" class="jumping-fish fish-1" />
-  </a>
-  
-  <a href="#contact" class="clickable-fish">
-    <use href="#fish-shape" class="jumping-fish fish-2" />
-  </a>
-  
-  <!-- Front solid wave layer -->
-  <path d="M 0,900 L 0,800 C 100,780 220,750 330,770 C 450,800 550,850 680,830 C 800,810 920,750 1050,780 C 1180,810 1300,840 1440,830 L 1440,900 L 0,900 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+@keyframes pathAnim1 {
+  0%,100% {
+    d:path("M 0,900 L 0,800 C 100,780 220,750 330,770 C 450,800 550,850 680,830 C 800,810 920,750 1050,780 C 1180,810 1300,840 1440,830 L 1440,900 L 0,900 Z");
+  }
+  50% {
+    d:path("M 0,900 L 0,790 C 120,820 240,800 360,780 C 500,760 620,780 740,800 C 860,820 980,840 1100,820 C 1220,800 1320,810 1440,830 L 1440,900 L 0,900 Z");
+  }
+}
+
+/* ---------------- FISH ---------------- */
+
+.clickable-fish {
+  cursor:pointer;
+  pointer-events:all;
+}
+
+.clickable-fish:hover {
+  filter:brightness(1.3) drop-shadow(0 0 10px rgba(255,126,95,0.8));
+}
+
+.fish {
+  transform-origin:center;
+  opacity:0;
+}
+
+/* Smooth realistic water jump arc */
+.fish-1 {
+  animation: fishJumpLeft 9s ease-in-out infinite;
+}
+
+.fish-2 {
+  animation: fishJumpRight 11s ease-in-out infinite;
+  animation-delay: 3.5s;
+}
+
+@keyframes fishJumpLeft {
+
+  0%,100% {
+    transform:translate(150px,885px) rotate(-60deg) scale(2);
+    opacity:0;
+  }
+
+  5% {
+    opacity:1;
+    transform:translate(180px,850px) rotate(-40deg) scale(2);
+  }
+
+  15% {
+    transform:translate(260px,780px) rotate(-10deg) scale(2);
+  }
+
+  /* peak just above water */
+  25% {
+    transform:translate(360px,720px) rotate(10deg) scale(2);
+  }
+
+  35% {
+    transform:translate(470px,780px) rotate(45deg) scale(2);
+  }
+
+  45% {
+    transform:translate(560px,860px) rotate(75deg) scale(2);
+  }
+
+  48% {
+    transform:translate(560px,890px) rotate(80deg) scale(2);
+    opacity:0;
+  }
+}
+
+@keyframes fishJumpRight {
+
+  0%,100% {
+    transform:translate(750px,885px) rotate(-60deg) scale(1.7);
+    opacity:0;
+  }
+
+  5% {
+    opacity:1;
+    transform:translate(780px,850px) rotate(-40deg) scale(1.7);
+  }
+
+  15% {
+    transform:translate(860px,780px) rotate(-10deg) scale(1.7);
+  }
+
+  25% {
+    transform:translate(960px,720px) rotate(10deg) scale(1.7);
+  }
+
+  35% {
+    transform:translate(1060px,780px) rotate(45deg) scale(1.7);
+  }
+
+  45% {
+    transform:translate(1140px,860px) rotate(75deg) scale(1.7);
+  }
+
+  48% {
+    transform:translate(1140px,890px) rotate(80deg) scale(1.7);
+    opacity:0;
+  }
+}
+
+</style>
+
+<defs>
+
+<!-- wave gradient -->
+<linearGradient id="gradient" x1="56%" y1="0%" x2="44%" y2="100%">
+  <stop offset="5%" stop-color="#854442"/>
+  <stop offset="95%" stop-color="#3c2f2f"/>
+</linearGradient>
+
+<!-- fish gradient -->
+<linearGradient id="fishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+  <stop offset="0%" stop-color="#FF7E5F"/>
+  <stop offset="100%" stop-color="#FEB47B"/>
+</linearGradient>
+
+<!-- fish shape -->
+<g id="fish-shape">
+  <path d="M25,0 C10,-12 -15,-10 -25,0 C-15,10 10,12 25,0 Z
+           M-22,0 L-32,-9 L-28,0 L-32,9 Z"
+        fill="url(#fishGradient)"/>
+  <path d="M5,5 C2,12 -3,12 -2,5 Z" fill="#FF7E5F" opacity="0.9"/>
+</g>
+
+</defs>
+
+<!-- BACK WAVE -->
+<path class="path-0"
+fill="url(#gradient)" fill-opacity="0.53"
+d="M 0,900 L 0,750 C 100,730 200,700 350,720 C 500,740 600,780 750,760 C 900,740 1050,680 1200,700 C 1300,720 1380,750 1440,770 L 1440,900 L 0,900 Z"/>
+
+<!-- FISH LAYER -->
+
+<a href="#projects" class="clickable-fish">
+  <use href="#fish-shape" class="fish fish-1"/>
+</a>
+
+<a href="#contact" class="clickable-fish">
+  <use href="#fish-shape" class="fish fish-2"/>
+</a>
+
+<!-- FRONT WAVE -->
+<path class="path-1"
+fill="url(#gradient)" fill-opacity="1"
+d="M 0,900 L 0,800 C 100,780 220,750 330,770 C 450,800 550,850 680,830 C 800,810 920,750 1050,780 C 1180,810 1300,840 1440,830 L 1440,900 L 0,900 Z"/>
+
 </svg>
 
    
