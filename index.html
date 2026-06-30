@@ -3,8 +3,83 @@ layout: default
 title: Home
 ---
 
-<h2>About Me</h2>
-<p>Hello, I am Kushagra. I am a college student and freelance programmer with experience in low level programming, scripting, web development and graphic designing.</br>
-I am constantly looking for opportunities to expand my portfolio and better my skillset. Some of my finished projects are listed on <a href="https://github.com/kuwushagra">my GitHub</a>. For further enquiries, I am available to contact on my email address.</p>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
 
-</p>
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .typing-text {
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      color: #38bdf8;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>
+      I am a <span class="typing-text"></span><span class="cursor">|</span>
+    </h1>
+  </div>
+
+  <script>
+    const words = ["Developer", "Designer", "Freelancer", "Blogger"];
+
+    let i = 0;
+    let j = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const display = document.querySelector(".typing-text");
+
+      let currentWord = words[i];
+
+      if (!isDeleting) {
+        display.textContent = currentWord.substring(0, j + 1);
+        j++;
+
+        if (j === currentWord.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+          return;
+        }
+      } else {
+        display.textContent = currentWord.substring(0, j - 1);
+        j--;
+
+        if (j === 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+      }
+
+      setTimeout(typeEffect, isDeleting ? 80 : 120);
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+  </script>
+
+</body>
+</html>
