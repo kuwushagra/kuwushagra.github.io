@@ -3,105 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ page.title }}</title>
-  
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+<title>test</title>
 
+<style>
 html, body {
   height: 100%;
   margin: 0;
+  background: black;
+  overflow-x: hidden;
+  font-family: "Source Code Pro", monospace;
+  color: white;
 }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: "Source Code Pro", monospace;
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); 
-    
-}
-
-.myname {
-    font-family: "Bitcount Single", system-ui;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-    font-variation-settings:
-      "slnt" 0,
-      "CRSV" 0.5,
-      "ELSH" 0,
-      "ELXP" 0;
-}
-h1 { margin-bottom: 0; text-shadow: 0 0 0px rgba(0,0,0,0); }
-a { color: #bdc3c7; text-decoration: none; }
-a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
-
-svg {
-  width: 100vw;
-  height: 100vh;
-  display: block;
-}
-
-.fish {
-  cursor: pointer;
-  pointer-events: all;
-  transition: opacity 0.6s ease;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
+#bgSvg {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
   pointer-events: none;
 }
 
 #fishSvg {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
   pointer-events: none;
 }
 
-#fishSvg g {
+.fish {
   pointer-events: all;
   cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
 }
 
 header, main, footer {
   position: relative;
-  z-index: 5;
+  z-index: 10;
 }
-  
 </style>
 </head>
 
 <body>
 
-<style>
-  body {
-    margin: 15px;
-    color: white; 
-}
-</style>
+<svg id="bgSvg" viewBox="0 0 1440 690" preserveAspectRatio="none"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<linearGradient id="gradient">
+  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+</linearGradient>
+</defs>
+
+<path fill="url(#gradient)" fill-opacity="0.25"
+d="M0,550 C300,500 600,600 900,520 C1200,450 1440,600 1440,600 L1440,690 L0,690 Z"/>
+
+<path fill="url(#gradient)" fill-opacity="0.15"
+d="M0,600 C200,650 400,550 600,600 C800,650 1000,520 1440,600 L1440,690 L0,690 Z"/>
+
+</svg>
+
+<svg id="fishSvg" viewBox="0 0 1440 690" preserveAspectRatio="none"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<g id="fishTemplate">
+  <g class="fish" fill="none" stroke-width="1.5">
+    <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
+    <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
+  </g>
+</g>
+</defs>
+
+</svg>
 
 <header>
   <link rel="stylesheet" href="https://ka-f.webawesome.com/webawesome@3.8.0/styles/webawesome.css" />
   <script type="module" src="https://ka-f.webawesome.com/webawesome@3.8.0/webawesome.loader.js"></script>
   <div style="display: flex; background: rgba(128, 128, 128, 0.2); border-radius: 12px; padding: 16px;">
-    <div style="display: inline-block; margin-top: auto; margin-right: auto;"><h1 style="font-size: 1.1em" class="myname">Kushagra Bhagat</h1></div>
+    <div style="display: inline-block; margin-top: auto; margin-right: auto;"><h1 style="font-size: 1.1em" class="myname">name</h1></div>
   <div><div style="display: inline-block; margin-top: auto;  margin-left: auto">
-  <p> <a href="https://kuwushagra.github.io/">Home</a> | <a href="https://kuwushagra.github.io/about">About</a> | <a href="https://kuwushagra.github.io/projects">Projects  </a></div>
+  <p> <a href="https://test.com">Home</a> | <a href="https://test.com/2">About</a> | <a href="test.com/3">Projects  </a></div>
   <div style="display: inline-block; margin-top: auto; margin-left: auto" class="links">
-      <a href="mailto:kushagrabhagat.work@gmail.com"><wa-icon name="envelope" variant="regular" style="color: salmon; font-size: 1.1em"></wa-icon></a>
-      <a href="https://github.com/kuwushagra"><wa-icon name="github-alt" family="brands" style="color: steelblue; font-size: 1.1em"></wa-icon></a>
+      <a href="mailto:work@gmail.com"><wa-icon name="envelope" variant="regular" style="color: salmon; font-size: 1.1em"></wa-icon></a>
+      <a href="https://github.com/"><wa-icon name="github-alt" family="brands" style="color: steelblue; font-size: 1.1em"></wa-icon></a>
   </div></div></div></p>
   </br>
 </header>
-  
-<main style="flex: 1;">
-  <div  style="line-height: 1.7; max-width: 650px; margin: 30px auto; padding: 0 10px;">
-     {{ content }}
+
+<main>
+  <div style="max-width:650px; margin:40px auto;">
+    {{ content }}
   </div>
 </main>
 
@@ -110,81 +105,6 @@ header, main, footer {
     <div style="text-align: center"> <p> &copy; {{ "now" | date: "%Y" }} Kushagra Bhagat. All rights reserved </p> </div>
   </footer>
 </div>
-  
-<svg style="background: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; inset: 0; z-index: 0;"
-id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none"
-xmlns="http://www.w3.org/2000/svg">
-
-<svg
-  id="fishSvg"
-  viewBox="0 0 1440 690"
-  preserveAspectRatio="none"
-  xmlns="http://www.w3.org/2000/svg"
-  style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    pointer-events: none;
-  ">
-</svg>
-
-<style>
-.path-0 {
-  animation: pathAnim-0 4s linear infinite;
-}
-
-@keyframes pathAnim-0 {
-  0%   { d: path("M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"); }
-  25%  { d: path("M 0,690 L 0,530 C 120,550 220,560 320,540 C 450,510 580,480 700,500 C 850,520 980,570 1120,550 C 1230,530 1340,550 1440,570 L 1440,690 L 0,690 Z"); }
-  50%  { d: path("M 0,690 L 0,560 C 80,540 180,510 300,530 C 420,550 550,580 680,560 C 820,530 950,490 1100,510 C 1220,530 1320,560 1440,570 L 1440,690 L 0,690 Z"); }
-  75%  { d: path("M 0,690 L 0,540 C 140,520 250,540 360,560 C 480,580 600,530 720,510 C 880,490 1020,540 1150,560 C 1250,580 1350,560 1440,570 L 1440,690 L 0,690 Z"); }
-  100% { d: path("M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"); }
-}
-
-.path-1 {
-  animation: pathAnim-1 4s linear infinite;
-}
-
-@keyframes pathAnim-1 {
-  0%   { d: path("M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"); }
-  25%  { d: path("M 0,690 L 0,580 C 150,600 250,620 350,600 C 480,570 600,540 720,560 C 850,580 980,630 1100,610 C 1220,590 1320,610 1440,630 L 1440,690 L 0,690 Z"); }
-  50%  { d: path("M 0,690 L 0,610 C 120,630 220,600 320,580 C 450,550 580,590 700,610 C 830,630 950,650 1080,620 C 1200,590 1310,610 1440,630 L 1440,690 L 0,690 Z"); }
-  75%  { d: path("M 0,690 L 0,590 C 90,560 190,540 300,560 C 420,580 520,620 650,640 C 780,660 900,610 1020,590 C 1150,570 1280,600 1440,630 L 1440,690 L 0,690 Z"); }
-  100% { d: path("M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"); }
-}
-</style>
-
-<defs>
-
-<linearGradient id="gradient" x1="56%" y1="0%" x2="44%" y2="100%">
-  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
-  <stop offset="50%" stop-color="#ffffff" stop-opacity="0.08"/>
-  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
-</linearGradient>
-
-<g id="fishTemplate">
-  <g class="fish" fill="none" stroke-width="1.5">
-    <path d="M30,0 C20,-12 -10,-12 -25,0 C-10,12 20,12 30,0 Z"/>
-    <path d="M-25,0 L-40,-12 L-35,0 L-40,12 Z"/>
-  </g>
-</g>
-
-</defs>
-
-<path fill="url(#gradient)" fill-opacity="0.2"
-stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"
-d="M 0,690 L 0,550 C 100,530 200,500 350,520 C 500,540 600,580 750,560 C 900,540 1050,480 1200,500 C 1300,520 1380,550 1440,570 L 1440,690 L 0,690 Z"
-class="path-0"/>
-
-<path fill="url(#gradient)" fill-opacity="0.15"
-stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"
-d="M 0,690 L 0,600 C 100,580 220,550 330,570 C 450,600 550,650 680,630 C 800,610 920,550 1050,580 C 1180,610 1300,640 1440,630 L 1440,690 L 0,690 Z"
-class="path-1"/>
-
-</svg>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -192,8 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const svg = document.getElementById("fishSvg");
 
 const fishUrls = [
- "https://kuwushagra.github.io",
- "https://kuwushagra.github.io/projects"
+  "https://test.com",
+  "https://test.com/2"
 ];
 
 const colors = ["#3a86ff", "#8338ec", "#ff006e", "#06d6a0", "#ffd166"];
@@ -201,24 +121,31 @@ const colors = ["#3a86ff", "#8338ec", "#ff006e", "#06d6a0", "#ffd166"];
 const MAX_ACTIVE = 3;
 const WATER_LINE = 560;
 
+const fishes = [];
+
 function fishColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-const fishes = [];
+function activeCount() {
+  return fishes.filter(f => f.active).length;
+}
 
 for (let i = 0; i < fishUrls.length; i++) {
 
-  const el = document.getElementById("fishTemplate").cloneNode(true);
+  const template = document.getElementById("fishTemplate");
+  const el = template.cloneNode(true);
   el.removeAttribute("id");
 
-  const color = fishColor();
-
-  el.querySelector(".fish").setAttribute("stroke", color);
-
-  el.style.opacity = 0;
+  el.querySelector(".fish").setAttribute("stroke", fishColor());
 
   svg.appendChild(el);
+
+  const fishShape = el.querySelector(".fish");
+
+  fishShape.addEventListener("click", () => {
+    window.location.href = fishUrls[i];
+  });
 
   fishes.push({
     el,
@@ -232,17 +159,6 @@ for (let i = 0; i < fishUrls.length; i++) {
     power: 40 + Math.random() * 30,
     interval: 120 + Math.random() * 200
   });
-
-const fishShape = el.querySelector(".fish");
-
-fishShape.style.cursor = "pointer";
-
-fishShape.addEventListener("click", () => {
-  window.location.href = fishUrls[i];
-});
-
-function activeCount() {
-  return fishes.filter(f => f.active).length;
 }
 
 function step(f) {
@@ -292,6 +208,6 @@ loop();
 
 });
 </script>
-  
+
 </body>
 </html>
