@@ -45,18 +45,6 @@ svg {
   display: block;
 }
 
-#svg {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-}
-
-main {
-  position: relative;
-  z-index: 20;
-  pointer-events: none;
-}
-
 .fish {
   cursor: pointer;
   pointer-events: all;
@@ -253,7 +241,7 @@ loop();
   </br>
 </header>
   
-<main style="flex: 1; position: relative; z-index: 1;">
+<main style="flex: 1;">
   <div  style="line-height: 1.7; max-width: 650px; margin: 30px auto; padding: 0 10px;">
      {{ content }}
   </div>
