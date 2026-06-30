@@ -45,6 +45,18 @@ svg {
   display: block;
 }
 
+#svg {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+main {
+  position: relative;
+  z-index: 20;
+  pointer-events: none;
+}
+
 .fish {
   cursor: pointer;
   pointer-events: all;
