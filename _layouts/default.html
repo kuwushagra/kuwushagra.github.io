@@ -43,6 +43,9 @@ svg {
   height: 100vh;
   display: block;
 }
+#svg {
+    pointer-events: none;
+}
 
 .fish {
   cursor: pointer;
@@ -55,7 +58,7 @@ svg {
 
 <body>
 
-<svg style="background: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;"
+<svg style="background: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: 100;"
 id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none"
 xmlns="http://www.w3.org/2000/svg">
 
@@ -147,6 +150,7 @@ for (let i = 0; i < fishUrls.length; i++) {
   el.style.opacity = 0;
 
   svg.appendChild(el);
+  svg.appendChild(f.el);
 
   fishes.push({
     el,
