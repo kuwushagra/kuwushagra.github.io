@@ -190,9 +190,7 @@ animateWaves();
 
 const fishLayer = document.getElementById("fishLayer");
 
-const fishUrls = [
-  "{{ site.fishlinks }}"
-];
+const fishUrls = {{ site.fishlinks | jsonify }};
 
 const colors = ["#3a86ff", "#8338ec", "#ff006e", "#06d6a0", "#ffd166"];
 
