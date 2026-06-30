@@ -66,6 +66,21 @@ a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
 }
 
+#waveGroup {
+  animation: waveMove 10s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes waveMove {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(-40px); }
+  100% { transform: translateX(0px); }
+}
+
+.wave {
+  transition: d 0.2s linear;
+}
+
 header, main, footer {
   position: relative;
   z-index: 10;
@@ -75,8 +90,35 @@ header, main, footer {
 
 <body>
 
-<svg id="bgSvg" viewBox="0 0 1440 690" preserveAspectRatio="none"
-xmlns="http://www.w3.org/2000/svg">
+<svg id="bgSvg" viewBox="0 0 1440 690" preserveAspectRatio="none">
+
+  <defs>
+    <linearGradient id="gradient">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+
+  <g id="waveGroup">
+
+    <path class="wave"
+      fill="url(#gradient)"
+      fill-opacity="0.25"
+      stroke="rgba(255,255,255,0.25)"
+      stroke-width="2"
+      d="M0,550 C300,500 600,600 900,520 C1200,450 1440,600 1440,600 L1440,690 L0,690 Z"
+    />
+
+    <path class="wave"
+      fill="url(#gradient)"
+      fill-opacity="0.15"
+      stroke="rgba(255,255,255,0.18)"
+      stroke-width="2"
+      d="M0,600 C200,650 400,550 600,600 C800,650 1000,520 1440,600 L1440,690 L0,690 Z"
+    />
+
+  </g>
+</svg>
 
 <defs>
 <linearGradient id="gradient">
@@ -245,6 +287,27 @@ function loop() {
 loop();
 
 });
+
+const waves = document.querySelectorAll(".wave");
+
+let t = 0;
+
+function animateWaves() {
+  t += 0.02;
+
+  waves.forEach((wave, i) => {
+    const offset = Math.sin(t + i) * 8;
+
+    wave.setAttribute(
+      "transform",
+      `translate(${offset}, ${Math.sin(t + i) * 2})`
+    );
+  });
+
+  requestAnimationFrame(animateWaves);
+}
+
+animateWaves();
 </script>
 
 </body>
