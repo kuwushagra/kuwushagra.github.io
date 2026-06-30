@@ -2,11 +2,11 @@ title: "Kushagra's Corner"
 description: My Portfolio Website
 baseurl: "/"
 url: "https://kuwushagra.github.io"
-headername: Kushagra Bhagat
+headername: "Kushagra's Corner"
 footername: Kushagra Bhagat
 githublink: https://github.com/kuwushagra
 mailaddress: kushagrabhagat.work@gmail.com
 fishlinks: 
-  - "https://kuwushagra.github.io/projects/geepac"
-  - "https://kuwushagra.github.io/projects/simplifile"
-  - "https://kuwushagra.github.io/projects/ocean-of-oppurtunities"
+  - "/projects/geepac"
+  - "/projects/simplifile"
+  - "/projects/ocean-of-oppurtunities"
