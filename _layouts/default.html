@@ -16,6 +16,7 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     overflow: hidden;
     font-family: "Source Code Pro", monospace;
@@ -248,7 +249,7 @@ loop();
 
 <div style="margin-top: auto">
   <footer style="background: rgba(128, 128, 128, 0.2); border-radius: 12px; padding: 16px;">
-    <p>Footer content</p>
+    <div style="text-align: centre"> <p> &copy; {{ "now" | date: "%Y" } </p> </div>
   </footer>
 </div>
   
