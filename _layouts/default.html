@@ -230,10 +230,14 @@ for (let i = 0; i < fishUrls.length; i++) {
     interval: 120 + Math.random() * 200
   });
 
-  el.addEventListener("click", () => {
-    window.location.href = fishUrls[i];
-  });
-}
+const fishShape = el.querySelector(".fish");
+
+fishShape.style.cursor = "pointer";
+fishShape.style.pointerEvents = "all";
+
+fishShape.addEventListener("click", () => {
+  window.location.href = fishUrls[i];
+});
 
 function activeCount() {
   return fishes.filter(f => f.active).length;
