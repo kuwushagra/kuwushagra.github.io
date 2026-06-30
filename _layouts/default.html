@@ -8,8 +8,15 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
   body {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     overflow: hidden;
     font-family: "Source Code Pro", monospace;
@@ -234,7 +241,7 @@ loop();
   </br>
 </header>
   
-<main>
+<main style="flex: 1">
   <div  style="line-height: 1.7; max-width: 650px; margin: 30px auto; padding: 0 10px;">
      {{ content }}
   </div>
