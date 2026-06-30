@@ -56,13 +56,16 @@ svg {
   pointer-events: none;
 }
 
-#fishSvg .fish {
-  pointer-events: all;
-  cursor: pointer;
+#fishSvg {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
 }
 
 #fishSvg g {
-  pointer-events: bounding-box;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 header, main, footer {
@@ -233,7 +236,6 @@ for (let i = 0; i < fishUrls.length; i++) {
 const fishShape = el.querySelector(".fish");
 
 fishShape.style.cursor = "pointer";
-fishShape.style.pointerEvents = "all";
 
 fishShape.addEventListener("click", () => {
   window.location.href = fishUrls[i];
