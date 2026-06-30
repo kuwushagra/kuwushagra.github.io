@@ -50,6 +50,11 @@ svg {
   transition: opacity 0.6s ease;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
 }
+
+#fishSvg .fish {
+  pointer-events: all;
+  cursor: pointer;
+}
 </style>
 </head>
 
@@ -88,9 +93,25 @@ svg {
   </footer>
 </div>
   
-<svg style="background: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: -1;"
+<svg style="background: #000000; position: fixed; top: 0; left: 0; width: 100vw; display: block; height: 100vh; z-index: 0;"
 id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none"
 xmlns="http://www.w3.org/2000/svg">
+
+<svg
+  id="fishSvg"
+  viewBox="0 0 1440 690"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+  ">
+</svg>
 
 <style>
 .path-0 {
@@ -150,7 +171,7 @@ class="path-1"/>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-const svg = document.getElementById("svg");
+const svg = document.getElementById("fishSvg");
 
 const fishUrls = [
  "https://kuwushagra.github.io",
