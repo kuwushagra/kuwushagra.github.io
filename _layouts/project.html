@@ -22,31 +22,7 @@ layout: default
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 
                   inset 0 0 10px rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease-in-out;
-    }
-  
-    .glowing-btn wa-icon {
-      font-size: 18px;
-      transition: transform 0.3s ease;
-    }
-  
-    .glowing-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), 
-                  0 0 10px rgba(255, 255, 255, 0.3),
-                  inset 0 0 15px rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px); 
-    }
-  
-    .glowing-btn:hover i {
-      transform: translateX(-3px);
-    }
-  
-    .glowing-btn:active {
-      transform: translateY(0) scale(0.98);
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-    }
-    
+    }    
 </style>
 
   <div style="width: 100%; margin: 0 auto; justify-content: center; align-items: center">
@@ -56,7 +32,7 @@ layout: default
     
     <div class="glowing-btn" style="margin: 0 auto; justify-content: center; align-items: center; width: 100%;">
       <h1>{{ page.projectname }}</h1> <a href="{{ page.projectlink }}"><wa-icon name="github" family="brands" style="font-size: 1.1em"></wa-icon></a>
-      <br><hr><br>
+      </br></hr></br>
       <img src="{{ page.projectimage }}"><br>
       {{ page.description }}<br>
     </div>
