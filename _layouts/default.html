@@ -406,21 +406,23 @@ loop();
 
 <!-- Copy button for code blocks -->
 <script>
-document.querySelectorAll('.highlighter-rouge').forEach((block) => {
+document.querySelectorAll('.highlighter-rouge pre').forEach((preElement) => {
+  const block = preElement.closest('.highlighter-rouge');
   const btn = document.createElement('button');
   btn.className = 'copy-btn';
-  btn.innerText = 'Copy';
+  btn.innerHTML = '<wa-icon name="copy"></wa-icon>';
   block.appendChild(btn);
-
   btn.addEventListener('click', () => {
-    const codeText = block.querySelector('code').innerText;
+    const codeText = preElement.querySelector('code').innerText;
     navigator.clipboard.writeText(codeText);
-
-    btn.innerText = 'Copied!';
-    setTimeout(() => btn.innerText = 'Copy', 1500);
+    btn.innerHTML = '<wa-icon name="check" style="color: #4ade80;"></wa-icon>';
+    setTimeout(() => {
+      btn.innerHTML = '<wa-icon name="copy"></wa-icon>';
+    }, 1500);
   });
 });
 </script>
+
   
 </body>
 </html>
