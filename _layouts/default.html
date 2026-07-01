@@ -130,7 +130,28 @@ a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
                   inset 0 0 10px rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease-in-out;
     }
-  
+
+  .glowing-btn-pressed {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 
+                inset 0 0 12px rgba(255, 255, 255, 0.25);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none; 
+  }
+
     .glowing-btn wa-icon {
       font-size: 18px;
       transition: transform 0.3s ease;
