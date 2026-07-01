@@ -57,8 +57,7 @@ git clone 'https://github.com/kuwushagra/SimpliFile' SimpliFile
 cd 'SimpliFile'
 make
 ```
-
-
+<br>
 ### Components
 This project relies on the [Dear ImGui](https://github.com/ocornut/imgui) library by [ocornut](https://github.com/ocornut). 
 
