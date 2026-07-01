@@ -30,6 +30,11 @@ layout: default
       <span><wa-icon slot="start" name="download"></wa-icon> Download</span> 
     </a>
     {% endif %}
+    {% if page.visitlink %}
+    <a href="{{ page.visitlink }}" class="glowing-btn" style="margin: 0 auto; justify-content: center; align-items: center;">
+      <span><wa-icon name="arrow-up-right-from-square" variant="solid"></wa-icon> Visit</span> 
+    </a>
+    {% endif %}
   </div>
   </div>
 <br>
