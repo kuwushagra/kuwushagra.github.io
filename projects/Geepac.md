@@ -7,5 +7,5 @@ projectlink: https://github.com/kuwushagra/geepac
 downloadlink: https://github.com/kuwushagra/geepac/releases/latest
 ---
 
-<h1>About Geepac</h1>
+## About Geepac
 <i>Project coming soon to GitHub :)</i>
