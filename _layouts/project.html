@@ -17,13 +17,20 @@ layout: default
 
 <div style="display: flex; width: 100%; margin: 0 auto; justify-content: center; align-items: center">
   <div style="margin-left: auto;">
+    {% if page.projectlink %}
     <a href="{{ page.projectlink }}" class="glowing-btn" style="margin: 0 auto; justify-content: center; align-items: center;">
       <span><wa-icon name="github" family="brands" style="font-size: 1.1em"></wa-icon> GitHub</span> 
-    </a></div><div>&nbsp;&nbsp;</div>
+    </a> 
+    {% endif %}
+  </div>
+  <div>&nbsp;&nbsp;</div>
   <div style="margin-right: auto;">
+    {% if page.downloadlink %}
     <a href="{{ page.downloadink }}" class="glowing-btn" style="margin: 0 auto; justify-content: center; align-items: center;">
       <span><wa-icon slot="start" name="download"></wa-icon> Download</span> 
-   </a></div>
+    </a>
+    {% endif %}
+  </div>
   </div>
 
   {{ content }}
