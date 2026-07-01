@@ -3,3 +3,15 @@ layout: default
 title: Posts | Kushagra's Corner
 ---
   
+<h1>Posts</h1>
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}" class="glowing-btn" style="display: block; width: 100%; padding: 25px; border-radius: 15px;">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
