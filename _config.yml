@@ -13,7 +13,7 @@ collections:
 
   posts:
     output: true
-    permaliknk: /posts/:path/
+    permalink: /posts/:year/:month/:day/:title.html
 fishlinks: 
   - "/projects/Geepac"
   - "/projects/SimpliFile"
