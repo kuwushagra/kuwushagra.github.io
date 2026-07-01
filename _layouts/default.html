@@ -174,6 +174,29 @@ a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
       transform: translateY(0) scale(0.98);
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
     }
+
+  /*Code box copy button*/
+.highlighter-rouge {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+.copy-btn:hover {
+  background: #444;
+}
+
 </style>
 </head>
 
@@ -369,5 +392,23 @@ loop();
 
 </script>
 
+<!-- Copy button for code blocks -->
+<script>
+document.querySelectorAll('.highlighter-rouge').forEach((block) => {
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.innerText = 'Copy';
+  block.appendChild(btn);
+
+  btn.addEventListener('click', () => {
+    const codeText = block.querySelector('code').innerText;
+    navigator.clipboard.writeText(codeText);
+
+    btn.innerText = 'Copied!';
+    setTimeout(() => btn.innerText = 'Copy', 1500);
+  });
+});
+</script>
+  
 </body>
 </html>
