@@ -6,6 +6,14 @@ headername: "Kushagra's Corner"
 footername: Kushagra Bhagat
 githublink: https://github.com/kuwushagra
 mailaddress: kushagrabhagat.work@gmail.com
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+  posts:
+    output: true
+    permaliknk: /posts/:path/
 fishlinks: 
   - "/projects/Geepac"
   - "/projects/SimpliFile"
