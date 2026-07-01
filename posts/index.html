@@ -3,8 +3,8 @@ layout: default
 title: Posts | Kushagra's Corner
 ---
   
-<h1>Blog Posts</h1>
-<ul class="post-list">
+<h1>Blog Posts</h1><br>
+<ul class="post-list" style="list-style-type: none;">
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url | relative_url }}" class="glowing-btn" style="display: block; width: 100%; padding: 25px; border-radius: 15px;">
