@@ -4,12 +4,12 @@ title: Projects | Kushagra's Corner
 ---
    
 # My Projects 
-<h3 href="https://kuwushagra.github.io/projects/Geepac">Geepac:</h3>
+<a href="https://kuwushagra.github.io/projects/Geepac"><h3>Geepac</h3></a>
 Slick game pack written in C <br>
 
-<h3 href="[https://github.com/kuwushagra/SimpliFile](https://kuwushagra.github.io/projects/SimpliFile)">SimpliFile:</h3>
+<a href="[https://github.com/kuwushagra/SimpliFile](https://kuwushagra.github.io/projects/SimpliFile)"><h3>SimpliFile:</h3></a>
 A Minimal GUI-Based File Manager Using ImGui and OpenGL </br>
 
-<h3 href="https://kuwushagra.github.io/projects/neurosleep">NeuroSleep:</h3> 
+<ha href="https://kuwushagra.github.io/projects/neurosleep"><h3>NeuroSleep:</h3></a>
 A project made using humour & AI for Build-Chella 2026 </br>
 
