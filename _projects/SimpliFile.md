@@ -4,7 +4,11 @@ projectname: SimpliFile
 description: A Minimal GUI-Based File Manager Using ImGui and OpenGL
 projectimage: https://github.com/kuwushagra/SimpliFile/raw/main/screenshots/screenshot.png?raw=true
 projectlink: https://github.com/kuwushagra/SimpliFile
-downloadlink: https://github.com/kuwushagra/SimpliFile/releases/latest
+multidownload: true
+multidlwindows: https://github.com/kuwushagra/SimpliFile/releases/download/v1.3.5-c41/SimpliFile-windows.zip
+multidllinux: https://github.com/kuwushagra/SimpliFile/releases/download/v1.3.5-c41/SimpliFile-linux.zip
+multidlmacosx86: https://github.com/kuwushagra/SimpliFile/releases/download/v1.3.5-c41/SimpliFile-macos-x86_64.zip
+multidlmacosarm: https://github.com/kuwushagra/SimpliFile/releases/download/v1.3.5-c41/SimpliFile-macos-arm64.zip
 ---
 
 ## About 
