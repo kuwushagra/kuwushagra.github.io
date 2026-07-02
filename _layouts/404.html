@@ -197,6 +197,8 @@ let fishUrls;
 
 if (baseUrl === "") {
   fishUrls = relativeFishUrls.map(link => `${baseUrl}${link}`);
+} else if (baseUrl === "/") {
+  fishUrls = relativeFishUrls.map(link => `${baseUrl}${link}`);
 } else {
   fishUrls = relativeFishUrls.map(link => `${baseUrl}/${link}`);
 }
