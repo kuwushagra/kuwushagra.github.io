@@ -110,59 +110,69 @@ a:hover { color: #ffffff; text-shadow: 0 0 1px rgba(255, 255, 255, 0.8); }
     }    
   
 /* button */
-   a.glowing-btn,
-button.glowing-btn,
-a.glowing-btn-pressed,
-button.glowing-btn-pressed {
+ .glowing-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: rgba(255, 255, 255, 0.15); 
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 
+                  inset 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+  .glowing-btn-pressed {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-
     padding: 14px 28px;
     border-radius: 50px;
-
-    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 600;
-    line-height: 1;
     letter-spacing: 0.5px;
-
-    color: #fff;
-    text-decoration: none;
-
-    cursor: pointer;
-    box-sizing: border-box;
-
-    appearance: none;
-    -webkit-appearance: none;
-
-    outline: none;
-}
-.glowing-btn {
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 
+                inset 0 0 12px rgba(255, 255, 255, 0.25);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none; 
+  }
 
-    box-shadow:
-        0 0 15px rgba(255,255,255,.2),
-        inset 0 0 10px rgba(255,255,255,.1);
+  .glowing-btn wa-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
 
-    transition: all .3s ease-in-out;
-}
+  .glowing-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), 
+                0 0 10px rgba(255, 255, 255, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px); 
+  }
 
-.glowing-btn-pressed {
-    background: rgba(255,255,255,.35);
-    border: 1px solid rgba(255,255,255,.6);
-    backdrop-filter: blur(4px);
+  .glowing-btn:hover i {
+    transform: translateX(-3px);
+  }
 
-    box-shadow:
-        0 0 20px rgba(255,255,255,.4),
-        inset 0 0 12px rgba(255,255,255,.25);
-
-    transition: all .2s ease-in-out;
-    pointer-events: none;
-}
+  .glowing-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  } 
   
   /*Code box copy button*/
 .highlighter-rouge {
