@@ -5,6 +5,7 @@ url: "https://kuwushagra.github.io"
 author: Kushagra Bhagat
 githublink: https://github.com/kuwushagra
 mailaddress: kushagrabhagat.work@gmail.com
+favicon: /assets/images/favicon.png
 collections:
   projects:
     output: true
