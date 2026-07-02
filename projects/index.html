@@ -2,10 +2,19 @@
 layout: default
 title: Projects | Kushagra's Corner
 ---
-   
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !! Renders the Projects page. Do NOT add projects manually here. Make an entry for them in _projects folder. They will appear automatically. !! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<style>
+  body { display: block; }
+</style>
+
+<div style="width: 100%; display: block;">
 <h1>My Projects</h1><br>
 
-<ul class="post-list" style="list-style-type: none; padding-left: 0; margin: 0">
+<ul class="post-list" style="width: 100%; list-style-type: none; padding-left: 0; margin: 0">
   {% for project in site.projects %}
     <li style="padding-left: 0; margin: 0">
       <a href="{{ project.url | relative_url }}" class="glowing-btn" style="display: block; width: 100%; padding: 25px; border-radius: 15px;">
@@ -14,4 +23,4 @@ title: Projects | Kushagra's Corner
       </a>
     </li><br>
   {% endfor %}
-</ul>
+</ul></div>

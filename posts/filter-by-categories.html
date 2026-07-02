@@ -2,19 +2,28 @@
 layout: default
 title: Posts | Kushagra's Corner
 ---
-  
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !! Renders the Filter Posts by categories page. Do NOT add posts manually here. Make an entry for them in _posts folder. They will appear automatically. !! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<style>
+  body { display: block; }
+</style>
+
+<div style="width: 100%; display: block;">
 <h1>Blog Posts</h1>
 
   <div style="display: flex; width: 100%; margin: 0 auto;">
-    <a href="/posts" class="glowing-btn" style="margin-left: 0; justify-content: center; align-items: center;">
+    <a href="{{ site.baseurl }}/posts" class="glowing-btn" style="margin-left: 0; justify-content: center; align-items: center;">
       <span>All</span> 
     </a>
     &nbsp; &nbsp;
-    <a href="/posts/filter-by-tags" class="glowing-btn" style="justify-content: center; align-items: center;">
+    <a href="{{ site.baseurl }}/posts/filter-by-tags" class="glowing-btn" style="justify-content: center; align-items: center;">
       <span>Tags</span> 
     </a>
     &nbsp; &nbsp;
-    <a href="/posts/filter-by-categories" class="glowing-btn-pressed" style="justify-content: center; align-items: center;">
+    <a href="{{ site.baseurl }}/posts/filter-by-categories" class="glowing-btn-pressed" style="justify-content: center; align-items: center;">
       <span>Categories</span> 
     </a>
   </div><br>
@@ -29,7 +38,7 @@ title: Posts | Kushagra's Corner
   {% for category in site.categories %}
     <div id="{{ category[0] | slugify }}" class="category-group">
       <h2>#{{ category[0] }}</h2>
-      <ul class="post-list" style="list-style-type: none; padding-left: 0; margin: 0">
+      <ul class="post-list" style="width: 100%; list-style-type: none; padding-left: 0; margin: 0">
         {% for post in category[1] %}
           <li style="padding-left: 0; margin: 0">
             <a href="{{ post.url | relative_url }}" class="glowing-btn" style="display: block; width: 100%; padding: 25px; border-radius: 15px;">
@@ -42,4 +51,5 @@ title: Posts | Kushagra's Corner
       </ul>
     </div>
   {% endfor %}
+</div>
 </div>

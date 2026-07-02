@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ page.title }}</title>
 
-<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+<link rel="icon" type="image/png" href="{{ '{{ site.baseurl }}/assets/images/favicon.png' | relative_url }}">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
@@ -19,9 +19,8 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 #svg {
@@ -259,13 +258,13 @@ xmlns="http://www.w3.org/2000/svg">
   <script type="module" src="https://ka-f.webawesome.com/webawesome@3.8.0/webawesome.loader.js"></script>
   
   <div style="display: flex; background: rgba(128, 128, 128, 0.2); border-radius: 12px; padding: 16px;">
-    <div style="display: inline-block; margin-top: auto; margin-right: auto;"><div style="display: inline-block; margin-top: auto; margin-right: auto;"><a href="{{ site.url }}/"><h1 style="font-size: 1.1em" class="myname">{{ site.headername }}</h1></a></div>
+    <div style="display: inline-block; margin-top: auto; margin-right: auto;"><div style="display: inline-block; margin-top: auto; margin-right: auto;"><a href="{{ site.url }}{{ site.baseurl }}"><h1 style="font-size: 1.1em" class="myname">{{ site.title }}</h1></a></div>
      <div style="display: inline-block; margin-top: auto; margin-left: auto" class="links">
       <a href="mailto:{{ site.mailaddress }}"><wa-icon name="envelope" variant="regular" style="color: salmon; font-size: 1.1em"></wa-icon></a>
       <a href="{{ site.githublink }}"><wa-icon name="github-alt" family="brands" style="color: steelblue; font-size: 1.1em"></wa-icon></a>
   </div></div>
   <div style="display: inline-block; margin-top: auto; margin-right: 0; margin-left: auto; text-align: right">
-  [ <a href="/about">About Site</a> | <a href="/projects/">My Projects</a> | <a href="/posts/">Blog Posts</a> ]</div>
+  [ <a href="{{ site.baseurl }}/about">About</a> | <a href="{{ site.baseurl }}/projects/">My Projects</a> | <a href="{{ site.baseurl }}/posts/">Blog Posts</a> ]</div>
  </div>
   </br>
 </header>
@@ -275,9 +274,9 @@ xmlns="http://www.w3.org/2000/svg">
 </main>
 
 <footer>
-  <p>&copy; {{ "now" | date: "%Y" }} {{ site.footername }}. All rights reserved</p>
+  <p>&copy; {{ "now" | date: "%Y" }} {{ site.author }}. All rights reserved</p>
 </footer>
-
+  
 <script>
 
 const waveBack = document.getElementById("waveBack");
@@ -316,8 +315,10 @@ animateWaves();
 
 const fishLayer = document.getElementById("fishLayer");
 
-const fishUrls = {{ site.fishlinks | jsonify }};
-
+const baseUrl = "{{ site.baseurl }}";
+const relativeFishUrls = {{ site.fishlinks | jsonify }};
+const fishUrls = relativeFishUrls.map(link => `${baseUrl}/${link}`);
+  
 const colors = ["#3a86ff", "#8338ec", "#ff006e", "#06d6a0", "#ffd166"];
 
 const fishes = [];
