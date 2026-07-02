@@ -10,6 +10,7 @@ visitlink: https://kuwushagra.github.io/Ocean-of-Opportunities/
 # About
 Ocean of Opportunities is a Jekyll powered personal portfolio website theme with the following features:
 - Beautiful background with clickable Fish that redirect to links of your choice
+- Customisable animated descriptors to effectively define you 
 - Unique PC/Tablet/Phone Layouts
 - Dedicated Project and Blog Post Pages
 - Easy organisation and setup of projects and posts with automatic parsing of `_projects` and `_posts` folders
